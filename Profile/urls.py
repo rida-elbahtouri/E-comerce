@@ -1,12 +1,12 @@
 from rest_framework import routers
-from .views import ProductViewSet
+from .views import UserViewSets,UserLogInViewSet
 from django.urls import path,include
 
 routers=routers.DefaultRouter()
-routers.register('product',ProductViewSet)
+routers.register('profiles',UserViewSets)
 
 
 urlpatterns = [
+    path('login',UserLogInViewSet.as_view()),
     path('',include(routers.urls)),
-
 ]
