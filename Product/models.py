@@ -8,6 +8,9 @@ class Product(models.Model):
     description=models.TextField()
     image=models.ImageField()
     prix=models.FloatField()
+    product_type=models.CharField(max_length=100,default="general")
+    offer=models.BooleanField(default=False)
+    is_in_basket=models.BooleanField(default=False)
     def NomberOfRating(self):
         return len(RatingProduct.objects.filter(product=self))
     def avrgRating(self):
