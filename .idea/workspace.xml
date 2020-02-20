@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c94e1f3d-4ce4-4bee-ac64-0ede0e266746" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Product/permissions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Product/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Accounts/CreateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Accounts/CreateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Products/ProductCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Products/ProductCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Products/showProducts.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Products/showProducts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,10 +137,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580878992164" />
-    <state x="359" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1581635851727">
+    <state x="359" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1582192778553">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="359" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1581635851727" />
+    <state x="359" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1582192778553" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1581678525205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

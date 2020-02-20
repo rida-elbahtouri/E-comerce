@@ -10,6 +10,10 @@ from rest_framework import status
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes =(RateProduct,IsAuthenticatedOrReadOnly)
+    def perform_create(self, serializer):
+        serializer.save(user_profile=self.request.user)
 
 class RatingViewSets(viewsets.ModelViewSet):
     queryset = RatingProduct.objects.all()

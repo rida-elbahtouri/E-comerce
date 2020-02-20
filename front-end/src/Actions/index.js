@@ -6,3 +6,11 @@ export const getProducts=()=>{
         dispatch({type:'Products',payload:res.data})
     }
 }
+
+export const getToken=(Auth)=>{
+    return ({
+        type:'token',
+        payload:Auth
+    }
+    )
+}

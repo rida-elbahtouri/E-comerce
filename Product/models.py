@@ -11,6 +11,10 @@ class Product(models.Model):
     product_type=models.CharField(max_length=100,default="general")
     offer=models.BooleanField(default=False)
     is_in_basket=models.BooleanField(default=False)
+    user_profile=models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     def NomberOfRating(self):
         return len(RatingProduct.objects.filter(product=self))
     def avrgRating(self):

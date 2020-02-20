@@ -8,7 +8,15 @@ const ProductReducer=(state=[],action)=>{
             return state
     }
 }
-
+const TokenReducer=(state="",action)=>{
+    switch (action.type){
+        case 'token':
+            return action.payload
+        default:
+            return state
+    }
+}
 export default combineReducers({
-    PRODUCTS:ProductReducer
+    PRODUCTS:ProductReducer,
+    Token:TokenReducer
 })

@@ -5,7 +5,12 @@ from .models import Product,RatingProduct,CommentsOfTheProduct
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model=Product
-        fields=('name','description','image','prix')
+        fields=('id','name','description','image','prix','product_type','user_profile')
+        extra_kwargs={
+            'user_profile':{
+                'read_only':True
+            }
+        }
 
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:

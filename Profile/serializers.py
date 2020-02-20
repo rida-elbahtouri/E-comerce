@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import UserProfile
-
+from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
+from rest_framework import status
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:

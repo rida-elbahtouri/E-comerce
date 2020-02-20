@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import {Form,Button,Container,Col,Row,Alert} from 'react-bootstrap'
 import {RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import RestApi from '../../Api/RestApi' 
+import {getToken} from '../../Actions'
+import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 class CreateAccount extends Component {
     state={
             country:"",
@@ -39,6 +42,10 @@ class CreateAccount extends Component {
         : event.target.value
     })
     }
+    validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
     validate=()=>{
         let emailError=""
         let firstName_Error=""
@@ -50,6 +57,9 @@ class CreateAccount extends Component {
       }else if(!this.state.email.includes('@')){
           emailError="email not valid"
       } 
+      if(!this.validateEmail(this.state.email)){
+        emailError="email not valid"
+      }
       if (!this.state.first_name){
         firstName_Error="you can't leave it blank"
       }
@@ -81,13 +91,25 @@ class CreateAccount extends Component {
                 adress:this.state.adress,
                 Postal_code:this.state.zip
               })
-              .then(function (response) {
-                console.log(response);
+              .then((response)=> {
+                const Auth=response.data.token
+                console.log(Auth)
+                this.props.getToken(Auth)
+                localStorage.setItem('token',Auth)
               })
-              .catch(function (error) {
-                console.log(error.message);
+              .catch((error)=> {
+                  if (error.response){
+                     this.setState({emailError:error.response.data.email}); 
+                  }
+                
               });
+              
           }
+    }
+    TokenCheck(){
+        if(this.props.token!==""){
+            return (<Redirect to="/Home" />)
+        }
     }
     EmailError(){
         if(this.state.emailError){
@@ -116,7 +138,9 @@ class CreateAccount extends Component {
     }
     render() {
         return (
+            
             <Container>
+            {this.TokenCheck()}
                 <Form onSubmit={this.hundelSubmit}>
                 <Form.Group>
                     <Row>
@@ -169,12 +193,14 @@ class CreateAccount extends Component {
                 </Form.Row>
 
                 <Button variant="primary" type="submit">
-                    Submit
+                   Sigh up
                 </Button>
                 </Form> 
                 </Container>
         )
     }
 }
-
-export default CreateAccount;
+const mapPropsToState=(state)=>{
+    return {token:state.Token}
+}
+export default connect(mapPropsToState,{getToken})(CreateAccount);

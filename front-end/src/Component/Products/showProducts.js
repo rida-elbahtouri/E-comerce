@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getProducts} from '../../Actions'
 import ProductCard from './ProductCard'
+import {MDBCardGroup} from 'mdbreact'
+import './showProduct.css'
 class ShowProducts extends React.Component{
     componentDidMount(){
         this.props.getProducts()
@@ -15,9 +17,10 @@ class ShowProducts extends React.Component{
     render(){
         console.log(this.props)
         return (
-            <div>
-                here products
+            <div className="cards">
+                <MDBCardGroup >
                 {this.renderH()}
+                </MDBCardGroup>
             </div>
         )
     }
