@@ -3,8 +3,9 @@ import {Form,Button,Container,Col,Row,Alert,Dropdown} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {getToken} from '../../Actions'
 import axios from 'axios'
+import RestApi from '../../Api/RestApi'
 import { Redirect } from 'react-router-dom'
-class CreateProduct extends Component {
+class EditProduct extends Component {
     state={
         image:null,
         name:"",
@@ -16,7 +17,20 @@ class CreateProduct extends Component {
         descriptionError:"",
         prixError:"",
         typeError:"",
-        Login:null,
+        product:{}
+    }
+    componentDidMount=async()=>{
+        await RestApi.get(`productproduct/${this.props.match.params.prId}/`).then(response=>{
+            console.log(response)
+            this.setState({product:response.data,
+                name:response.data.name,
+                description:response.data.description,
+                prix:response.data.prix,
+                product_type:response.data.product_type,
+            })
+        }).catch(error=>{
+            console.log(error)
+        })
     }
     handelChanges=(event)=>{
         const isCheckbox = event.target.type === "checkbox";
@@ -89,58 +103,47 @@ class CreateProduct extends Component {
         formData.append('product_type',this.state.product_type)
         if(isValid){
             axios({
-                method: 'post',
-                url: 'http://127.0.0.1:8000/productproduct/',
+                method: 'put',
+                url: `http://127.0.0.1:8000/productproduct/${this.props.match.params.prId}/`,
                 data: formData
                 ,headers:{
                     Authorization:"token "+this.props.token
                 }
               })
               .then((response)=> {
-                this.setState({Login:true})
+               console.log(response)
               })
               .catch((error)=> {
-                if(error.response){
-                    if(error.response.data.detail=="Invalid token header. No credentials provided."){
-                        this.setState({Login:false})
-                    }
-                }
-                
+                console.log(error)
               });
           }
     }
-    CheckLogn(){
-        if (this.state.Login===false){
-            return(<Redirect to="/Login" />)
-        }else if(this.state.Login===true){
-            return(<Redirect to="/Home" />)
-        }
-    }
+
     render() {
+        console.log(this.state.product)
         return (
             <Container>
-            {this.CheckLogn()}
             <Form onSubmit={this.hundelSubmit}>
             <Row>
                 <Form.Group as={Col}>
                     <Form.Label>Product Image</Form.Label>
-                    <Form.Control onChange={this.handelImag} type="file" name="image" accept="image/*" />
+                    <Form.Control onChange={this.handelImag}  type="file" name="image" accept="image/*" />
                {this.imageError()} 
                </Form.Group>
                 <Form.Group as={Col}>
                     <Form.Label>Product Name</Form.Label>
-                    <Form.Control onChange={this.handelChanges}  type="text" name="name" />
+                    <Form.Control onChange={this.handelChanges}  value={this.state.name} type="text" name="name" />
                     {this.nameError()} 
                 </Form.Group>
                 </Row>
                 <Form.Group>
                     <Form.Label>Description</Form.Label>
-                    <Form.Control onChange={this.handelChanges} as="textarea" rows="3" name="description" />
+                    <Form.Control onChange={this.handelChanges} value={this.state.description} as="textarea" rows="3" name="description" />
                     { this.descriptionError()}
                 </Form.Group>
                 <Form.Group controlId="formGridState">
                 <Form.Label>State</Form.Label>
-                <Form.Control onChange={this.handelChanges} name="product_type" as="select" value={this.state.product_type}>
+                <Form.Control onChange={this.handelChanges} value={this.state.type} name="product_type" as="select" value={this.state.product_type}>
                     <option>books</option>
                     <option>clothing</option>
                     <option>Elicronic</option>
@@ -149,11 +152,11 @@ class CreateProduct extends Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Prix</Form.Label>
-                    <Form.Control onChange={this.handelChanges}  type="number" name="prix" />
+                    <Form.Control onChange={this.handelChanges} value={this.state.prix} type="number" name="prix" />
                     {this.prixError()} 
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    create
+                Save
                 </Button>
             </Form>
             </Container>
@@ -163,4 +166,4 @@ class CreateProduct extends Component {
 const mapStateToProps=(state)=>{
     return {token:state.Token.token}
 }
-export default connect(mapStateToProps,{getToken})(CreateProduct);
+export default connect(mapStateToProps,{getToken})(EditProduct)

@@ -10,7 +10,7 @@ class ShowProducts extends React.Component{
     }
     renderH(){
         const Product=this.props.products.map((product,i)=>{
-          return <ProductCard product={product} key={i} />
+          return <ProductCard  product={product} key={i} />
         })
         return Product
     }
@@ -28,7 +28,8 @@ class ShowProducts extends React.Component{
 }
 const mapStateToPros=(state)=>{
     return{
-        products:state.PRODUCTS 
+        products:state.PRODUCTS,
+        user:state.Token
     }
 }
 export default connect(mapStateToPros,{getProducts})(ShowProducts);

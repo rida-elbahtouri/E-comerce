@@ -14,3 +14,10 @@ export const getToken=(Auth)=>{
     }
     )
 }
+
+export const getproduct=(pr)=>{
+    return({
+        type:'product',
+        payload:pr
+    })
+}

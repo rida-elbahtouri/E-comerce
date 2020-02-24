@@ -67,8 +67,15 @@ componentWillMount(){
               })
               .then((response)=> {
                 const Auth=response.data.token
+                console.log(response)
                 this.props.getToken(Auth)
+                const userId=response.data.id
+                const userData={
+                    token:Auth,id:userId
+                }
+                this.props.getToken(userData)
                 localStorage.setItem('token',Auth)
+                localStorage.setItem('id',userId)
               })
               .catch((error)=> {
                 this.setState({emailError:error.response.data.non_field_errors})

@@ -22,7 +22,11 @@ class UserViewSets(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         token, created = Token.objects.get_or_create(user=serializer.instance)
-        return Response({'token': token.key}, status=status.HTTP_201_CREATED, headers=headers)
+        return Response({'token': token.key,'id':token.user_id}, status=status.HTTP_201_CREATED, headers=headers)
 class UserLogInViewSet(ObtainAuthToken):
     """create the login view"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+    def post(self, request, *args, **kwargs):
+        response = super(UserLogInViewSet, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id})

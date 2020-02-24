@@ -93,9 +93,13 @@ class CreateAccount extends Component {
               })
               .then((response)=> {
                 const Auth=response.data.token
-                console.log(Auth)
-                this.props.getToken(Auth)
+                const userId=response.data.id
+                const userData={
+                    token:Auth,id:userId
+                }
+                this.props.getToken(userData)
                 localStorage.setItem('token',Auth)
+                localStorage.setItem('id',userId)
               })
               .catch((error)=> {
                   if (error.response){

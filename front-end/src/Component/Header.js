@@ -3,13 +3,16 @@ import {
 MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem,MDBIcon
 } from "mdbreact";
-import { BrowserRouter as Router ,Switch,Route,Link} from 'react-router-dom';
+import { BrowserRouter as Router ,Switch,Route,Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Login from "./Accounts/Login";
 import CreateAccount from './Accounts/CreateAccount';
 import CreateProduct from '../Component/Product/CreateProduct'
 import ShowProducts from '../Component/Products/showProducts'
 import {getToken} from '../Actions'
+import ProductDetails from './Products/productDetails';
+import EditProduct from './Product/EditProduct';
+import logo from './logo.png'
 class NavbarPage extends Component {
 state = {
   isOpen: false
@@ -24,6 +27,7 @@ toggleCollapse = () => {
 }
 LogOut=()=>{
   localStorage.setItem('token',"")
+  localStorage.setItem('id',"")
   this.props.getToken(localStorage.getItem('token'))
 }
 checkLogin(){
@@ -59,9 +63,9 @@ render() {
   console.log(this.props)
   return (
     <Router>
-      <MDBNavbar color="indigo" dark expand="md">
+      <MDBNavbar color="stylish-color" style={{"marginBottom":"20px"}} dark expand="md">
         <MDBNavbarBrand>
-          <strong className="white-text">LOGO</strong>
+        <img style={{'width':"34px"}} src={logo} alt="logo" />
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -78,7 +82,10 @@ render() {
                   <span className="mr-2">CATEGORY</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem href="#!">books</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">
+                  <Link to="pr">
+                  books</Link>
+                  </MDBDropdownItem>
                   <MDBDropdownItem href="#!">clothing</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Elicronic</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Games</MDBDropdownItem>
@@ -119,7 +126,10 @@ render() {
           <Route path="/Home">
             <ShowProducts />
           </Route>
+          <Route path="/product/:prId" component={ProductDetails}/>
+          <Route path="/edit/product/:prId" component={EditProduct}/>
         </Switch>
+        
     </Router>
     );
   }
