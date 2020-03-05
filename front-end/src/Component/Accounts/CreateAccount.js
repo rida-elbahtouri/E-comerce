@@ -20,7 +20,7 @@ class CreateAccount extends Component {
             lastName_Error:"",
             emailError: "",
             passwordError: "",
-            passwordError2: "",
+            passwordError2: "",Postal_codeError:""
         }
     CountryList=()=>{
         const list=CountryRegionData.map((country,i)=>{
@@ -52,6 +52,7 @@ class CreateAccount extends Component {
         let lastName_Error=""
         let passwordError=""
         let passwordError2=""
+        let Postal_codeError=""
       if(!this.state.email){
         emailError="please write your email"
       }else if(!this.state.email.includes('@')){
@@ -71,9 +72,12 @@ class CreateAccount extends Component {
       }else if (this.state.password1!==this.state.password2){
           passwordError2="password don't mutch"
       }
-      if (emailError||firstName_Error||passwordError||passwordError2||lastName_Error){
+      if(!this.state.zip){
+        Postal_codeError="enter the Zip code of your area"
+      }
+      if (emailError||firstName_Error||passwordError||passwordError2||lastName_Error||Postal_codeError){
           this.setState({
-              emailError,firstName_Error,lastName_Error,passwordError,passwordError2
+              emailError,firstName_Error,lastName_Error,passwordError,passwordError2,Postal_codeError
           })
           return false
       }
@@ -102,6 +106,7 @@ class CreateAccount extends Component {
                 localStorage.setItem('id',userId)
               })
               .catch((error)=> {
+                  console.log(error.response)
                   if (error.response){
                      this.setState({emailError:error.response.data.email}); 
                   }
@@ -111,7 +116,7 @@ class CreateAccount extends Component {
           }
     }
     TokenCheck(){
-        if(this.props.token!==""){
+        if(this.props.token){
             return (<Redirect to="/Home" />)
         }
     }
@@ -140,6 +145,12 @@ class CreateAccount extends Component {
             return <Alert variant="danger">{this.state.passwordError2}</Alert> 
         }
     }
+    Postal_codeError(){
+        if(this.state.Postal_codeError){
+            return <Alert variant="danger">{this.state.Postal_codeError}</Alert>
+    }
+    }
+    
     render() {
         return (
             
@@ -193,6 +204,7 @@ class CreateAccount extends Component {
                     <Form.Group as={Col} controlId="formGridZip">
                     <Form.Label>Zip</Form.Label>
                     <Form.Control name="zip" onChange={this.handelChanges} />
+                    {this.Postal_codeError()}
                     </Form.Group>
                 </Form.Row>
 
@@ -205,6 +217,7 @@ class CreateAccount extends Component {
     }
 }
 const mapPropsToState=(state)=>{
-    return {token:state.Token}
-}
+    return {token:state.Token.token,
+    id:state.Token.id}
+    }
 export default connect(mapPropsToState,{getToken})(CreateAccount);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Form,Button,Container,Alert} from 'react-bootstrap'
+import {Form,Card,Button,Container,Alert} from 'react-bootstrap'
 import RestApi from '../../Api/RestApi' 
 import {getToken} from '../../Actions'
 import { Redirect } from 'react-router-dom'
@@ -12,6 +12,7 @@ class Login extends Component {
 }
 componentWillMount(){
     if(localStorage.getItem('token')){
+        
         getToken(localStorage.getItem('token'))
     }
 }
@@ -53,7 +54,7 @@ componentWillMount(){
         }
     }
     TokenCheck(){
-        if(this.props.token!==""){
+        if(this.props.token){
             return (<Redirect to="/Home" />)
         }
     }
@@ -83,32 +84,33 @@ componentWillMount(){
           }   
 }
     render() {
-        console.log(localStorage.getItem('token'))
+        console.log(this.props)
         return (
-            <Container>
+            <Container style={{'marginTop':'150px','marginLeft':'25px'}}>
+            <Card border="success" style={{'padding':'8px','width':'90vw'}}>
              {this.TokenCheck()}
             <Form onSubmit={this.hundelSubmit}>
-                 <Form.Group controlId="formBasicEmail">
+                 <Form.Group style={{'width':'85vw'}} controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="emal" name="email"   placeholder="Enter email" onChange={this.handelChanges} />
                     {this.EmailError()}
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group style={{'width':'85vw'}} controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" onChange={this.handelChanges} />
                     {this.passwordError()}
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="outline-dark" type="submit">
                     Login
                 </Button>
             </Form>
+            </Card>
             </Container>
         )
     }
 }
 const mapStateToProps=(state)=>{
-    return {
-        token:state.Token
+    return {token:state.Token.token,
+    id:state.Token.id}
     }
-}
 export default connect(mapStateToProps,{getToken})(Login)

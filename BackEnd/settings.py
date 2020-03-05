@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','Product','rest_framework','rest_framework.authtoken','Profile','corsheaders'
+    'django.contrib.staticfiles','Product',
+    'rest_framework','rest_framework.authtoken',
+    'Profile','corsheaders','stripe'
 ]
 AUTH_USER_MODEL = 'Profile.UserProfile'
 MIDDLEWARE = [
@@ -73,7 +75,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BackEnd.wsgi.application'
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'PAGE_SIZE': 10
+}
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -128,3 +135,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL =  '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STRIPE_SECRET_KEY='sk_test_oTd3qHPW0eqSSJvnfQIiTDSs00w7yeS4qE'

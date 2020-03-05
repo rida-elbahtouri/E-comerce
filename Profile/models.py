@@ -4,6 +4,9 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from Product.models import Product
+import sys
+sys.path.append("..")
 # Create your models here.
 class UserProfileManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, adress="", Postal_code=0, password=None):
@@ -35,9 +38,9 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     full_name=models.CharField(max_length=255)
     adress=models.CharField(max_length=300,blank=True)
     Postal_code=models.IntegerField(blank=True)
+    Card=models.ManyToManyField(Product , blank=True)
     is_staff=models.BooleanField(default=False)
     is_active =models.BooleanField(default=True)
-
     objects=UserProfileManager()
     USERNAME_FIELD='email'
     REQUIRED_FIELDS=["first_name","last_name"]

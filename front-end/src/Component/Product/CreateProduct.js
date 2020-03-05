@@ -33,7 +33,7 @@ class CreateProduct extends Component {
         let descriptionError=""
         let typeError=""
       if(!this.state.product_type){
-        typeError="please write your product type"
+        typeError="please choose your product type"
       } 
       if (!this.state.prix){
         prixError="you can't leave it blank"
@@ -75,18 +75,29 @@ class CreateProduct extends Component {
             return <Alert variant="danger">{this.state.prixError}</Alert> 
         }
     }
+    typeError(){
+        if(this.state.typeError){
+            return <Alert variant="danger">{this.state.typeError}</Alert> 
+        }
+    }
     handelImag=e=>{
        this.setState({ image:e.target.files[0]})
     }
     hundelSubmit=(e)=>{
         e.preventDefault();
         const isValid=this.validate()
+        let productType=""
+        if(this.state.product_type==="Choose..."){
+            productType="general"
+        }else{
+            productType=this.state.product_type
+        }
         let formData=new FormData()
         formData.append('image',this.state.image)
         formData.append('name',this.state.name)
         formData.append('prix', this.state.prix)
         formData.append('description' ,this.state.description)
-        formData.append('product_type',this.state.product_type)
+        formData.append('product_type',productType)
         if(isValid){
             axios({
                 method: 'post',
@@ -139,13 +150,16 @@ class CreateProduct extends Component {
                     { this.descriptionError()}
                 </Form.Group>
                 <Form.Group controlId="formGridState">
-                <Form.Label>State</Form.Label>
+                <Form.Label>Product Type</Form.Label>
                 <Form.Control onChange={this.handelChanges} name="product_type" as="select" value={this.state.product_type}>
+                    <option></option>
                     <option>books</option>
                     <option>clothing</option>
-                    <option>Elicronic</option>
+                    <option>Electronic</option>
                     <option>Games</option>
+                    <option>general</option>
                 </Form.Control>
+                {this.typeError()}
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Prix</Form.Label>

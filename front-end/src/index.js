@@ -8,14 +8,15 @@ import Header from './Component/Header';
 import '@fortawesome/fontawesome-free/css/all.min.css'; import
 'bootstrap-css-only/css/bootstrap.min.css'; import
 'mdbreact/dist/css/mdb.css';
-import {BrowserRouter as Router} from 'react-router-dom'
+import './index.css'
+import SearchResult from './Component/Products/SearchResult';
+
 
 
 const store=createStore(Reducers,applyMiddleware(thunk))
 ReactDOM.render(
 <Provider store={store}>
-<Router>
 <Header />
-</Router>
+<SearchResult />
 </Provider>
 , document.getElementById('root'));

@@ -21,3 +21,9 @@ export const getproduct=(pr)=>{
         payload:pr
     })
 }
+export const getTotal=(price)=>{
+    return ({
+        type:'price',
+        payload:price
+    })
+}

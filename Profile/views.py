@@ -30,3 +30,5 @@ class UserLogInViewSet(ObtainAuthToken):
         response = super(UserLogInViewSet, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
         return Response({'token': token.key, 'id': token.user_id})
+
+

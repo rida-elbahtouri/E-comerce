@@ -3,8 +3,9 @@ from .models import UserProfile
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework import status
-class UserSerializer(serializers.ModelSerializer):
 
+
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ('email', 'password','first_name','last_name','adress','Postal_code')
@@ -24,3 +25,4 @@ class UserSerializer(serializers.ModelSerializer):
             password=validated_data['password']
         )
         return user
+

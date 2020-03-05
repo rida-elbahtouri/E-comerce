@@ -1,3 +1,106 @@
 .cards{
     margin: 0 auto;
 }
+
+.img{
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.profile{
+    text-align: center;
+}
+.profile p{
+    font-size: 24px;
+}
+
+.comment{
+    border: 1px solid rgb(225, 26, 251);
+    margin-top: 10px;
+}
+.star{
+    color: yellow;
+}
+.list_of_items{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 25px;
+    margin-left: 50px;
+    padding-right:50px ;
+    width: 90vw;
+    border-bottom: lightsalmon 1px solid;
+    position: relative;
+}
+.item_data{
+    display: inline-block;
+    
+}
+.item_data h1{
+    display: inline-block;
+    margin-left: 10px;
+}
+.item_data p{
+    position: absolute;
+    right: 50vh;
+    top:10px
+}
+.remove_from_card{
+    position: absolute;
+    right: 20px;
+    top:10px;
+    margin-bottom: 2px;
+}
+.product_img{
+    width: 12vw;
+   margin-bottom: 2px;
+}
+.card-pay{
+    display: inline-block !important;
+    margin-left: 50px;
+}
+.pay-button{
+   
+    margin-bottom: 20px;
+    
+  
+}
+
+@media only screen and (max-width: 750px) {
+    .list_of_items{
+        vertical-align: middle;
+        margin-bottom: 15px;
+        margin-left: 20px;
+        padding-right:10px ;
+        width: 90vw;
+    }
+    .item_data{
+        display: inline;
+        
+    }
+    .item_data h1{
+        margin-left: 10px;
+        display: block;
+    }
+    .item_data p{
+        position: static;
+        font-size: 24px;
+        color: black;
+        z-index: 2;
+    }
+    .remove_from_card{
+        margin-bottom: 2px;
+        position: absolute;
+        right: 5vw;
+        bottom: 10px;
+        top:auto;
+    }
+    .product_img{
+        display: block;
+        width: 75vw;
+       margin-bottom: 2px;
+       margin: 0 auto;
+    }
+    .mobile-price{
+        display: inline-block;
+    }
+  }
+  

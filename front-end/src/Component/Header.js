@@ -13,13 +13,21 @@ import {getToken} from '../Actions'
 import ProductDetails from './Products/productDetails';
 import EditProduct from './Product/EditProduct';
 import logo from './logo.png'
+import Profile from "./Accounts/Profile";
+import EditProfile from "./Accounts/EditProfile";
+import Basket from "./Accounts/Basket"
+import GetByCatagory from "./Products/GetByCatagory";
 class NavbarPage extends Component {
 state = {
   isOpen: false
 };
 componentWillMount(){
   if(localStorage.getItem('token')){
-      this.props.getToken(localStorage.getItem('token'))
+      const data={
+        token:localStorage.getItem('token'),
+        id:localStorage.getItem('id')
+      }
+      this.props.getToken(data)
   }
 }
 toggleCollapse = () => {
@@ -31,8 +39,7 @@ LogOut=()=>{
   this.props.getToken(localStorage.getItem('token'))
 }
 checkLogin(){
-  let token =this.props.token
-  if (token ===""){
+  if (!this.props.token.token){
     return (
       <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="#!">
@@ -46,11 +53,14 @@ checkLogin(){
   }else{
     return(
       <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">
-                  <Link to="/Login">Your basket</Link>
+                  <MDBDropdownItem href="/Mybasket">
+                  My Basket
                   </MDBDropdownItem>
-                  <MDBDropdownItem href="#!">
-                  <Link to="/CreateProduct">Create Product</Link>
+                  <MDBDropdownItem href={`/user/${this.props.token.id}`}>
+                    my profile
+                  </MDBDropdownItem>
+                  <MDBDropdownItem href="/CreateProduct">
+                  Create Product
                   </MDBDropdownItem>
                   <MDBDropdownItem onClick={this.LogOut} href="#!">
                   <Link to="/Home">Logout</Link>
@@ -59,13 +69,18 @@ checkLogin(){
     )
   }
 }
+searchSabmit(e){
+  e.preventDefault();
+  console.log(e.target.value)
+}
 render() {
   console.log(this.props)
   return (
     <Router>
       <MDBNavbar color="stylish-color" style={{"marginBottom":"20px"}} dark expand="md">
         <MDBNavbarBrand>
-        <img style={{'width':"34px"}} src={logo} alt="logo" />
+        <Link to='/Home'>
+        <img style={{'width':"34px"}} src={logo} alt="logo" /></Link>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -74,21 +89,20 @@ render() {
               <MDBNavLink to="#!">best Deals</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">sell with us</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <span className="mr-2">CATEGORY</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem href="#!">
-                  <Link to="pr">
-                  books</Link>
+                  <MDBDropdownItem href="/products/books">
+                  books
                   </MDBDropdownItem>
-                  <MDBDropdownItem href="#!">clothing</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Elicronic</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Games</MDBDropdownItem>
+                  <MDBDropdownItem href="/products/clothing">
+                  clothing
+                  </MDBDropdownItem>
+                  <MDBDropdownItem href="/products/Electronic">Electronic</MDBDropdownItem>
+                  <MDBDropdownItem href="/products/Games">Games</MDBDropdownItem>
+                  <MDBDropdownItem href="/products/general">general</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -96,10 +110,15 @@ render() {
           <MDBNavbarNav right>
             <MDBNavItem>
               <MDBFormInline waves>
-                <div className="md-form my-0">
+                <div   className="md-form my-0">
                   <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                 </div>
               </MDBFormInline>
+            </MDBNavItem>
+            <MDBNavItem>
+            <MDBNavLink to="#!"> 
+            <MDBIcon icon="shopping-basket" />
+            </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
@@ -128,6 +147,13 @@ render() {
           </Route>
           <Route path="/product/:prId" component={ProductDetails}/>
           <Route path="/edit/product/:prId" component={EditProduct}/>
+          <Route exact path="/user/:userId" component={Profile}/>
+          <Route path="/edit/user/:userId" component={EditProfile}/>
+          <Route path="/Mybasket" component={Basket}/>
+          <Route path="/products/:type" component={GetByCatagory} />
+          <Route exact path="/">
+            <ShowProducts />
+          </Route>
         </Switch>
         
     </Router>

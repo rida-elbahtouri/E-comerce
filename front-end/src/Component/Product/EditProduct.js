@@ -17,7 +17,8 @@ class EditProduct extends Component {
         descriptionError:"",
         prixError:"",
         typeError:"",
-        product:{}
+        product:{},
+        updated:false
     }
     componentDidMount=async()=>{
         await RestApi.get(`productproduct/${this.props.match.params.prId}/`).then(response=>{
@@ -112,17 +113,23 @@ class EditProduct extends Component {
               })
               .then((response)=> {
                console.log(response)
+               this.setState({updated:true})
               })
               .catch((error)=> {
                 console.log(error)
               });
           }
     }
-
+Checkupdate(){
+    if(this.state.updated){
+        return (<Redirect to={`/product/${this.props.match.params.prId}`}/>)
+    }
+}
     render() {
         console.log(this.state.product)
         return (
             <Container>
+            {this.Checkupdate()}
             <Form onSubmit={this.hundelSubmit}>
             <Row>
                 <Form.Group as={Col}>
@@ -146,7 +153,7 @@ class EditProduct extends Component {
                 <Form.Control onChange={this.handelChanges} value={this.state.type} name="product_type" as="select" value={this.state.product_type}>
                     <option>books</option>
                     <option>clothing</option>
-                    <option>Elicronic</option>
+                    <option>Electronic</option>
                     <option>Games</option>
                 </Form.Control>
                 </Form.Group>

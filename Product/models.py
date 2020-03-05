@@ -22,12 +22,28 @@ class Product(models.Model):
         ratings=RatingProduct.objects.filter(product=self)
         for rating in ratings:
             sum+=rating.rating
-        if len(ratings>0):
+        if len(ratings)>0:
             return sum/len(ratings)
         else:
             return 0
+    def short_desc(self):
+        return self.description[:200]
     def __str__(self):
         return self.name
+
+class Basket(models.Model):
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    products = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
+    def getTotal(self):
+        total=0
+        for product in Basket.objects.filter(user_profile=self.user_profile):
+            total +=product.products.prix
+        return total
+    def __str__(self):
+        return self.user_profile.full_name
 
 class RatingProduct(models.Model):
     user_profile=models.ForeignKey(
@@ -49,3 +65,12 @@ class CommentsOfTheProduct(models.Model):
     comments=models.TextField()
     def __str__(self):
         return self.user_profile.full_name
+class Payment(models.Model):
+    source = models.CharField(max_length=50)
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,null=True,blank=True
+    )
+    amount = models.FloatField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+

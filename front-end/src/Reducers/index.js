@@ -24,8 +24,17 @@ const ProductRed=(state={},action)=>{
             return state
     }
 }
+const TotalPrice=(state=0,action)=>{
+    switch (action.type){
+        case 'price':
+            return state+action.payload
+        default:
+            return state
+    }
+}
 export default combineReducers({
     PRODUCTS:ProductReducer,
     Token:TokenReducer,
-    product:ProductRed
+    product:ProductRed,
+    Total:TotalPrice
 })
