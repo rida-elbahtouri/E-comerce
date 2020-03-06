@@ -32,9 +32,18 @@ const TotalPrice=(state=0,action)=>{
             return state
     }
 }
+const SearchReducer=(state='',action)=>{
+    switch (action.type){
+        case 'search':
+            return action.payload
+        default:
+            return state
+    }
+}
 export default combineReducers({
     PRODUCTS:ProductReducer,
     Token:TokenReducer,
     product:ProductRed,
-    Total:TotalPrice
+    Total:TotalPrice,
+    search:SearchReducer,
 })

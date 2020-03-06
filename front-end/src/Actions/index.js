@@ -21,6 +21,12 @@ export const getproduct=(pr)=>{
         payload:pr
     })
 }
+export const getSearch=(keywords)=>{
+    return({
+        type:'search',
+        payload:keywords
+    })
+}
 export const getTotal=(price)=>{
     return ({
         type:'price',

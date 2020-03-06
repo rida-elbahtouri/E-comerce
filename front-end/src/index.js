@@ -9,7 +9,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; import
 'bootstrap-css-only/css/bootstrap.min.css'; import
 'mdbreact/dist/css/mdb.css';
 import './index.css'
-import SearchResult from './Component/Products/SearchResult';
 
 
 
@@ -17,6 +16,5 @@ const store=createStore(Reducers,applyMiddleware(thunk))
 ReactDOM.render(
 <Provider store={store}>
 <Header />
-<SearchResult />
 </Provider>
 , document.getElementById('root'));

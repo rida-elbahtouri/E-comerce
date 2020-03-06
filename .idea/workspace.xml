@@ -3,40 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c94e1f3d-4ce4-4bee-ac64-0ede0e266746" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0002_auto_20200205_0716.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0002_auto_20200205_0716.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0003_ratingproduct.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0003_ratingproduct.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0004_auto_20200213_1732.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0004_auto_20200213_1732.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0005_commentsoftheproduct.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0005_commentsoftheproduct.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0006_auto_20200214_1245.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0006_auto_20200214_1245.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/migrations/0007_product_user_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/migrations/0007_product_user_profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Product/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Profile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Profile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Profile/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Profile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Accounts/CreateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Accounts/CreateAccount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Accounts/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Accounts/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/Component/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Product/CreateProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Product/CreateProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Product/EditProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Product/EditProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Products/ProductCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Products/ProductCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Products/productDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Products/productDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Products/showProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Products/showProduct.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Products/showProducts.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Products/showProducts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

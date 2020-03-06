@@ -9,7 +9,7 @@ import Login from "./Accounts/Login";
 import CreateAccount from './Accounts/CreateAccount';
 import CreateProduct from '../Component/Product/CreateProduct'
 import ShowProducts from '../Component/Products/showProducts'
-import {getToken} from '../Actions'
+import {getToken,getSearch} from '../Actions'
 import ProductDetails from './Products/productDetails';
 import EditProduct from './Product/EditProduct';
 import logo from './logo.png'
@@ -17,9 +17,10 @@ import Profile from "./Accounts/Profile";
 import EditProfile from "./Accounts/EditProfile";
 import Basket from "./Accounts/Basket"
 import GetByCatagory from "./Products/GetByCatagory";
+import SearchResult from "./Products/SearchResult";
 class NavbarPage extends Component {
 state = {
-  isOpen: false
+  isOpen: false,keyword:'',url:''
 };
 componentWillMount(){
   if(localStorage.getItem('token')){
@@ -53,7 +54,7 @@ checkLogin(){
   }else{
     return(
       <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/Mybasket">
+                  <MDBDropdownItem href={this.state.url}>
                   My Basket
                   </MDBDropdownItem>
                   <MDBDropdownItem href={`/user/${this.props.token.id}`}>
@@ -69,12 +70,33 @@ checkLogin(){
     )
   }
 }
-searchSabmit(e){
+searchSabmit=(e)=>{
   e.preventDefault();
-  console.log(e.target.value)
+}
+searchKey=(e)=>{
+  this.setState({keyword:e.target.value})
+}
+checkLogin_ForBasket(){
+  
+  if (!this.props.token.token){
+  return (
+            <MDBNavItem>
+            <MDBNavLink to="/CreateAccount"> 
+            <MDBIcon icon="shopping-basket" />
+            </MDBNavLink>
+            </MDBNavItem>
+  )
+  }else{
+    return (
+      <MDBNavItem>
+      <MDBNavLink to="/Mybasket"> 
+      <MDBIcon icon="shopping-basket" />
+      </MDBNavLink>
+      </MDBNavItem>
+)
+  }
 }
 render() {
-  console.log(this.props)
   return (
     <Router>
       <MDBNavbar color="stylish-color" style={{"marginBottom":"20px"}} dark expand="md">
@@ -108,18 +130,18 @@ render() {
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
-            <MDBNavItem>
-              <MDBFormInline waves>
+            
+              <MDBFormInline onSubmit={this.searchSabmit} waves>
                 <div   className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                  <input onChange={this.searchKey} className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                 </div>
               </MDBFormInline>
-            </MDBNavItem>
-            <MDBNavItem>
-            <MDBNavLink to="#!"> 
-            <MDBIcon icon="shopping-basket" />
-            </MDBNavLink>
-            </MDBNavItem>
+              <MDBNavItem>
+              <a href={`/search/${this.state.keyword}`}>
+               <MDBIcon style={{'marginTop':'12px','marginRight':'17px','color':'white'}} icon="search" />
+               </a>
+               </MDBNavItem>
+            {this.checkLogin_ForBasket()}
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
@@ -153,7 +175,8 @@ render() {
           <Route path="/products/:type" component={GetByCatagory} />
           <Route exact path="/">
             <ShowProducts />
-          </Route>
+          </Route> 
+          <Route path="/search/:keyword" component={SearchResult} />
         </Switch>
         
     </Router>
@@ -163,4 +186,4 @@ render() {
 const mapStateToProps=(state)=>{
   return {token:state.Token}
 }
-export default connect(mapStateToProps,{getToken})(NavbarPage);
+export default connect(mapStateToProps,{getToken,getSearch})(NavbarPage);

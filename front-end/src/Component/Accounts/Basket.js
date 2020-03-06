@@ -4,7 +4,6 @@ import {getToken} from '../../Actions'
 import {connect} from 'react-redux'
 import ShowCard from './ShowCard'
 import Checkout from './Checkout'
-import { Alert } from 'react-bootstrap'
  class Basket extends Component {
     state={products:[],msg:""}
     componentDidMount(){
@@ -17,28 +16,20 @@ import { Alert } from 'react-bootstrap'
       })
       .then((response)=> {
           const basket=response.data
-          const userBasket=basket.filter((product)=>{
-              return product.user_profile==this.props.id
-          })
-       console.log(userBasket)
        console.log(basket)
-       this.setState({products:userBasket})
+       this.setState({products:basket})
       })
       .catch((error)=> {
-        console.log(error.response.data)
-        this.setState({msg:error.response.data})
+        console.log(error.response)
       });
     }
     RenderHelper(){
-        if(!this.state.msg.msg){
         const basket= this.state.products.map((product)=>{
 
                 return <ShowCard al={product.id}  product={product.products} key={product.id} />
                 })
             return basket
-    }else{
-        return <Alert variant="success" >your payment success</Alert>
-    }}
+    }
     check_is_total(){
         if(this.state.products[0]){
             return <Checkout price={this.state.products[0].getTotal} />
