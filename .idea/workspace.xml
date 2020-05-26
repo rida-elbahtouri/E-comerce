@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c94e1f3d-4ce4-4bee-ac64-0ede0e266746" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/Component/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/Component/Header.js" afterDir="false" />
-    </list>
+    <list default="true" id="c94e1f3d-4ce4-4bee-ac64-0ede0e266746" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,14 +119,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1345" height="201" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1581499768467" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1580878992164">
+    <state x="184" y="6" key="SettingsEditor" timestamp="1583489060626">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580878992164" />
-    <state x="359" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1583391606293">
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1583489060626" />
+    <state x="359" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1583488372304">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="359" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583391606293" />
+    <state x="359" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583488372304" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1581678525205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

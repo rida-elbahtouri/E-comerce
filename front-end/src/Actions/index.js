@@ -1,6 +1,7 @@
 import RestApi from '../Api/RestApi'
 
 export const getProducts=()=>{
+    //get all the products from Api
     return async (dispatch)=>{
         const res=await RestApi.get('productproduct/')
         dispatch({type:'Products',payload:res.data})
@@ -8,6 +9,7 @@ export const getProducts=()=>{
 }
 
 export const getToken=(Auth)=>{
+    //get the token
     return ({
         type:'token',
         payload:Auth
@@ -28,6 +30,7 @@ export const getSearch=(keywords)=>{
     })
 }
 export const getTotal=(price)=>{
+    //get the total price of the products in the basket
     return ({
         type:'price',
         payload:price

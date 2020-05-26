@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import {getToken,getTotal} from '../../Actions'
  class ShowCard extends Component {
     state={product:{}}
-    componentDidMount(){
+    componentDidMount=()=>{
+        //get the product with id 
         RestApi.get(`productproduct/${this.props.product}/`).then(response=>{
             console.log(response.data)
             this.setState({product:response.data})
@@ -22,6 +23,7 @@ import {getToken,getTotal} from '../../Actions'
         }
     }
     RemoveItem=()=>{
+        //delete the product from the baslet in the Api
         axios({
             method:'delete',
             url:`http://127.0.0.1:8000/productbasket/${this.props.al}/`,

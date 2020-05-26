@@ -9,7 +9,7 @@ import Login from "./Accounts/Login";
 import CreateAccount from './Accounts/CreateAccount';
 import CreateProduct from '../Component/Product/CreateProduct'
 import ShowProducts from '../Component/Products/showProducts'
-import {getToken,getSearch} from '../Actions'
+import {getToken} from '../Actions'
 import ProductDetails from './Products/productDetails';
 import EditProduct from './Product/EditProduct';
 import logo from './logo.png'
@@ -24,10 +24,12 @@ state = {
 };
 componentWillMount(){
   if(localStorage.getItem('token')){
+    //check if the is a token in the local storage
       const data={
         token:localStorage.getItem('token'),
         id:localStorage.getItem('id')
       }
+      //if it is ,set the state to data
       this.props.getToken(data)
   }
 }
@@ -35,11 +37,13 @@ toggleCollapse = () => {
   this.setState({ isOpen: !this.state.isOpen });
 }
 LogOut=()=>{
+  //when logout delete the token from  state and the local storage
   localStorage.setItem('token',"")
   localStorage.setItem('id',"")
   this.props.getToken(localStorage.getItem('token'))
 }
 checkLogin(){
+  //change the header base on the user token
   if (!this.props.token.token){
     return (
       <MDBDropdownMenu className="dropdown-default">
@@ -186,4 +190,4 @@ render() {
 const mapStateToProps=(state)=>{
   return {token:state.Token}
 }
-export default connect(mapStateToProps,{getToken,getSearch})(NavbarPage);
+export default connect(mapStateToProps,{getToken})(NavbarPage);

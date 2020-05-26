@@ -35,6 +35,7 @@ class CreateAccount extends Component {
         return this.setState({region:e})
     }
     handelChanges=(event)=>{
+        //set state of the target object with his value 
         const isCheckbox = event.target.type === "checkbox";
     this.setState({
       [event.target.name]: isCheckbox
@@ -47,6 +48,7 @@ class CreateAccount extends Component {
         return re.test(String(email).toLowerCase());
     }
     validate=()=>{
+        //check if all the fields are valid
         let emailError=""
         let firstName_Error=""
         let lastName_Error=""
@@ -87,6 +89,7 @@ class CreateAccount extends Component {
         e.preventDefault();
         const isValid=this.validate()
         if(isValid){
+            //if all fields valid make an Api request 
             RestApi.post('profileprofiles/', {
                 email:this.state.email,
                 password:this.state.password2,
@@ -117,9 +120,11 @@ class CreateAccount extends Component {
     }
     TokenCheck(){
         if(this.props.token){
+            //if the is a token return to home page
             return (<Redirect to="/Home" />)
         }
     }
+    //alert errors 
     EmailError(){
         if(this.state.emailError){
             return <Alert variant="danger">{this.state.emailError}</Alert> 

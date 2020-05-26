@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
 
 const ProductReducer=(state=[],action)=>{
+    //state of all products from Api
     switch (action.type){
         case 'Products':
             return action.payload
@@ -9,6 +10,7 @@ const ProductReducer=(state=[],action)=>{
     }
 }
 const TokenReducer=(state={},action)=>{
+    //Token and id from user auth
     switch (action.type){
         case 'token':
             return action.payload
@@ -25,6 +27,7 @@ const ProductRed=(state={},action)=>{
     }
 }
 const TotalPrice=(state=0,action)=>{
+    //price reducer
     switch (action.type){
         case 'price':
             return state+action.payload
